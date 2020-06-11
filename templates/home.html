@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SoulChain-UC3</title>
+	
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="static/Footer-Basic.css">
+    <link rel="stylesheet" href="static/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="static/Projects-Horizontal.css">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <div>
+        <div class="header-dark">
+            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="#">Welcome</a></div>
+            </nav>
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 offset-lg-2">
+					<form action="{{ url_for('predict')}}" method="POST">
+                        <h1 class="text-center">Enter Your Message&nbsp;Here!</h1><textarea class="form-control-lg" name="message" style="width: 600px;height: 60px;"></textarea></div>
+                </div>
+            </div>
+            <div class="container"><input type="submit" class="btn-info" value="predict" style="background-color: rgb(89,183,213);padding: 13px;margin: 6px;height: 57px;width: 103px;font-size: 18px;font-family: Bitter, serif;filter: blur(0px);opacity: 1;">
+        
+		</div>
+		
+    </div>
+    <div class="projects-horizontal">
+        <div class="container visible">
+            <div class="results">
+			{% if prediction == 1%}
+                <div class="col-sm-6 visible pulse animated item">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5"><a href="#"><img src="/static/ImageProb.jpg" style="width: 207px;height: 138px;"></a></div>
+                        <div class="col">
+                            <h3 class="name">Problem</h3>
+                            <p class="description">it seem that you have a problem!</p>
+                        </div>
+                    </div>
+                </div>
+				{% elif prediction == 0%}
+                <div class="col-sm-6 visible item" data-bs-hover-animate="pulse">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5"><a href="#"><img src="/static/imagenotprob.jpg" style="width: 207px;height: 138px;"></a></div>
+                        <div class="col" style="width: 207px;height: 138px;">
+                            <h3 class="name">Not Problem</h3>
+                            <p class="description">Since you do not face any problem, we will ignore your messages</p>
+                        </div>
+                    </div>
+                </div>
+				{% endif %}
+            </div>
+			
+        </div>
+    </div>
+    <div class="footer-basic">
+        <footer>
+            <div class="container">
+                <p class="text-secondary copyright"><strong>FADEL Wiam © 2020</strong></p>
+            </div>
+        </footer>
+    </div>
+    <script src="static/jquery.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/bs-init.js"></script>
+</body>
+
+</html>
